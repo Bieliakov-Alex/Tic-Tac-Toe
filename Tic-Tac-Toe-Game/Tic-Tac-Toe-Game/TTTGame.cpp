@@ -116,12 +116,28 @@ int TTTGame::getWidth() const
 
 bool TTTGame::firstPlayerMove(int length, int width)
 {
-	return false;
+	if (length-1<0||width-1<0||length - 1 > this->getLength() || width - 1 > this->getWidth() || this->field[length - 1][width - 1] != '_')
+	{
+		return false;
+	}
+	else
+	{
+		this->field[length - 1][width - 1] = this->cross;
+		return true;
+	}
 }
 
 bool TTTGame::secondPlayerMove(int length, int width)
 {
-	return false;
+	if (length - 1<0 || width - 1<0 || length - 1 > this->getLength() || width - 1 > this->getWidth() || this->field[length - 1][width - 1] != '_')
+	{
+		return false;
+	}
+	else
+	{
+		this->field[length - 1][width - 1] = this->toe;
+		return true;
+	}
 }
 
 void TTTGame::calculateState()
