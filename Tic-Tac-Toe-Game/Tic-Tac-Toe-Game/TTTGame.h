@@ -48,5 +48,7 @@ public:
 	bool checkHorizontal(char symbol)const;
 	bool checkVertical(char symbol)const;
 	//TODO: Реализовать проверку диагоналей
+	bool checkSouthEastDiagonal(char symbol)const;
+	bool checkSouthWestDiagonal(char symbol)const;
 };
 

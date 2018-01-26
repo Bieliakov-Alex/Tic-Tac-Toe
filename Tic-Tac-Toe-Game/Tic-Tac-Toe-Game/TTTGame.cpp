@@ -162,6 +162,7 @@ bool TTTGame::checkHorizontal(char symbol) const
 					if (this->field[i][k] != symbol)
 					{
 						symbolWin = false;
+						break;
 					}
 				}
 				if (symbolWin)
@@ -189,6 +190,7 @@ bool TTTGame::checkVertical(char symbol) const
 					if (this->field[k][j] != symbol)
 					{
 						symbolWin = false;
+						break;
 					}
 				}
 				if (symbolWin)
@@ -199,5 +201,59 @@ bool TTTGame::checkVertical(char symbol) const
 		}
 	}
 
+	return false;
+}
+
+bool TTTGame::checkSouthEastDiagonal(char symbol) const
+{
+	for (size_t i = 0; i < this->getLength()-this->countElements+1; i++)
+	{
+		for (size_t j = 0; j < this->getWidth()-this->countElements+1; j++)
+		{
+			if (this->field[i][j]==symbol)
+			{
+				bool symbolWin = true;
+				for (size_t k = i+1,l=j+1; (k < this->countElements+i)&&(l<this->countElements+j); k++,l++)
+				{
+					if (this->field[k][l]!=symbol)
+					{
+						symbolWin = false;
+						break;
+					}
+				}
+				if (symbolWin)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool TTTGame::checkSouthWestDiagonal(char symbol) const
+{
+	for (size_t i = this->getLength()-1;i>-2+this->countElements; i--)
+	{
+		for (size_t j = this->getWidth()-1; j > -2+this->countElements; j--)
+		{
+			if (this->field[i][j] == symbol)
+			{
+				bool symbolWin = true;
+				for (size_t k = i-1, l = j-1;(k>i+this->countElements)&&(l>j+this->countElements) ; k--, l--)
+				{
+					if (this->field[k][l] != symbol)
+					{
+						symbolWin = false;
+						break;
+					}
+				}
+				if (symbolWin)
+				{
+					return true;
+				}
+			}
+		}
+	}
 	return false;
 }
