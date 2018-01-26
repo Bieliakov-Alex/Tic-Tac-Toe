@@ -126,15 +126,8 @@ bool TTTGame::secondPlayerMove(int length, int width)
 
 void TTTGame::calculateState()
 {
-	if (this->checkDraw())
-	{
-		this->gameEnd = true;
-		this->gameState = DRAW;
-	}
-	else
-	{
-		//TODO: реализовать проверку победы игроков
-	}
+	//TODO: реализовать проверку победы игроков
+	//TODO: реализовать проверку ничьи
 }
 
 bool TTTGame::checkDraw()const
