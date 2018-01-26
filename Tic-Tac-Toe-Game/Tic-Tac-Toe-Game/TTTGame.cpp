@@ -126,8 +126,28 @@ bool TTTGame::secondPlayerMove(int length, int width)
 
 void TTTGame::calculateState()
 {
-	//TODO: реализовать проверку победы игроков
-	//TODO: реализовать проверку ничьи
+	//проверка победы первого игрока
+	if (this->checkHorizontal(this->cross)||this->checkVertical(this->cross)||this->checkSouthEastDiagonal(this->cross)||this->checkSouthWestDiagonal(this->cross))
+	{
+		this->gameEnd = true;
+		this->gameState = GameState::FIRST_PLAYER_WIN;
+		return;
+	}
+	//проверка победы второго игрока
+	else if (this->checkHorizontal(this->toe) || this->checkVertical(this->toe) || this->checkSouthEastDiagonal(this->toe) || this->checkSouthWestDiagonal(this->toe))
+	{
+		this->gameEnd = true;
+		this->gameState = GameState::SECOND_PLAYER_WIN;
+		return;
+	}
+	//проверка ничьи
+	else if(this->checkDraw())
+	{
+		this->gameEnd = true;
+		this->gameState = GameState::DRAW;
+		return;
+	}
+	return;
 }
 
 bool TTTGame::checkDraw()const
