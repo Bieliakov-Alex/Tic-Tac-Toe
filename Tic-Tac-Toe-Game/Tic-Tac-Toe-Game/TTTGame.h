@@ -11,9 +11,9 @@ class TTTGame
 {
 private:
 	//размер поля по вертикали
-	int length;
+	int length{ 0 };
 	//размер поля по горизонтали
-	int width;
+	int width{ 0 };
 	//поле
 	char** field;
 	//символ крестика
@@ -23,7 +23,7 @@ private:
 	//признак конца игры
 	bool gameEnd;
 	//количество элементов в ряд для победы
-	int countElements;
+	int countElements{ 0 };
 	//состояние игры - продолжается, победа первого\второго игрока, ничья
 	GameState gameState;
 

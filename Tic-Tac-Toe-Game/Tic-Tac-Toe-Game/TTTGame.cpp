@@ -52,7 +52,7 @@ void TTTGame::setToe(char toe)
 
 void TTTGame::setCountElements(int countElements)
 {
-	if (countElements>0)
+	if (countElements>0&&this->getLength()>0&&this->getWidth()>0&&countElements<=this->getLength()&&countElements<=this->getWidth())
 	{
 		this->countElements = countElements;
 	}
